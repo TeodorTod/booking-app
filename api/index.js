@@ -2,9 +2,9 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import authRoute from './routes/auth.js';
-import usersRoute from './routes/auth.js';
-import hotelsRoute from './routes/auth.js';
-import roomsRoute from './routes/auth.js';
+import usersRoute from './routes/users.js';
+import hotelsRoute from './routes/hotels.js';
+import roomsRoute from './routes/rooms.js';
 
 const app = express();
 dotenv.config();
@@ -28,10 +28,12 @@ app.get('/', (req, res) => {
 });
 
 //middlewares
+app.use(express.json());
+
 app.use("/api/auth", authRoute);
-app.use("/api/users", authRoute);
-app.use("/api/hotels", authRoute);
-app.use("/api/rooms", authRoute);
+app.use("/api/users", usersRoute);
+app.use("/api/hotels", hotelsRoute);
+app.use("/api/rooms", roomsRoute);
 
 app.listen(8800, () => {
     connect()
