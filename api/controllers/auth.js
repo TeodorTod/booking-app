@@ -2,7 +2,6 @@ import User from "../models/User.js "
 import { createError } from "../utils/error.js";
 import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
-import cookieParser from "cookie-parser";
 
 export const register = async (req, res, next) => {
     try {
